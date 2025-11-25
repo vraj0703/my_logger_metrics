@@ -1,3 +1,4 @@
-import 'package:logger/logger.dart';
+import 'package:my_logger_metrics/my_logger_metrics.dart';
 
-var logger = Logger();
+typedef $logger = MyLoggerMetrics;
+typedef $metric = MyLoggerMetrics;

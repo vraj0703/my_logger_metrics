@@ -14,12 +14,17 @@ dependencies:
     sdk: flutter
   web: ^1.0.0
   plugin_platform_interface: ^2.0.2
-  logger: ^2.6.1
+  logger: ^2.6.2
+  aptabase_flutter: ^0.4.1
+  package_info_plus: ^8.3.1
+  device_info_plus: ^10.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  mockito: ^5.6.1
+  build_runner: ^2.10.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

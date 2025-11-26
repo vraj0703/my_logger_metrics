@@ -23,7 +23,7 @@ void main() async {
   await MyLoggerMetrics.init(
     config: AppConfig(
       flavor: Flavor.DEV, // or Flavor.PROD based on build environment
-      aptabaseAppKey: 'YOUR-APTABASE-KEY',
+      aptabaseAppKey: 'YOUR-APTABASE-KEY', // Optional: Omit if you only want logging
     ),
   );
 

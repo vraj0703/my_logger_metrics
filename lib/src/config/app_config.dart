@@ -3,9 +3,9 @@ import 'package:my_logger_metrics/flavor.dart';
 
 class AppConfig {
   final Flavor flavor;
-  final String aptabaseAppKey;
+  final String? aptabaseAppKey;
 
-  AppConfig({required this.flavor, required this.aptabaseAppKey});
+  AppConfig({required this.flavor, this.aptabaseAppKey});
 
   Level get logLevel {
     switch (flavor) {

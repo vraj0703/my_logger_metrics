@@ -35,5 +35,10 @@ void main() {
       );
       expect(config.aptabaseAppKey, 'my_secret_key');
     });
+
+    test('should allow null aptabaseAppKey', () {
+      final config = AppConfig(flavor: Flavor.DEV);
+      expect(config.aptabaseAppKey, isNull);
+    });
   });
 }

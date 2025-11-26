@@ -3,6 +3,7 @@ import 'package:my_logger_metrics/src/config/app_config.dart';
 import 'package:my_logger_metrics/src/logger/app_logger.dart';
 import 'package:my_logger_metrics/src/metrics/app_metrics.dart';
 import 'package:my_logger_metrics/src/metrics/aptabase_metrics_client.dart';
+import 'package:my_logger_metrics/src/metrics/noop_metrics_client.dart';
 
 export 'src/config/app_config.dart';
 export 'src/logger/app_logger.dart';
@@ -28,10 +29,12 @@ class MyLoggerMetrics {
     AppMetrics appMetrics;
     if (metrics != null) {
       appMetrics = metrics;
-    } else {
-      final client = AptabaseMetricsClient(appKey: config.aptabaseAppKey);
+    } else if (config.aptabaseAppKey != null) {
+      final client = AptabaseMetricsClient(appKey: config.aptabaseAppKey!);
       await client.init();
       appMetrics = AppMetrics(client: client);
+    } else {
+      appMetrics = AppMetrics(client: NoOpMetricsClient());
     }
 
     _instance = MyLoggerMetrics._(logger: appLogger, metrics: appMetrics);

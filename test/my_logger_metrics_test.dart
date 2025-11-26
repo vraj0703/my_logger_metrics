@@ -34,5 +34,16 @@ void main() {
       MyLoggerMetrics.trackEvent('event');
       verify(mockMetrics.trackEvent('event')).called(1);
     });
+
+    test('should initialize without metrics key', () async {
+      final config = AppConfig(flavor: Flavor.DEV);
+
+      // We can't easily verify internal state without exposing it, but we can ensure it doesn't throw
+      await MyLoggerMetrics.init(config: config);
+
+      // Should not throw
+      MyLoggerMetrics.d('debug');
+      await MyLoggerMetrics.trackEvent('event'); // Should be no-op
+    });
   });
 }

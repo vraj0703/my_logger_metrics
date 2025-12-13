@@ -1,74 +1,34 @@
-# Logger and Metrics Plugin
+# My Logger Metrics
 
-This plugin provides a universal logger and metrics interface for Flutter projects, configurable via flavors.
+A utility package for advanced logging, analytics, and performance metrics.
 
-## Features
+## Key Features
 
-- **Unified Logger**: Wrapper around `logger` package with flavor-based log levels.
-- **Metrics Tracking**: Integration with `aptabase_flutter` for privacy-friendly analytics.
-- **Flavor Configuration**: Easy configuration for DEV, TEST, STAGING, and PROD environments.
-- **Time Tracking**: Helper method `timeEvent` to track duration of operations.
-- **Convenience Aliases**: Use `$logger` and `$metric` for cleaner code.
+- **Logging**: Pretty printing logs with `logger`.
+- **Analytics**: Integration with `aptabase_flutter` for anonymous analytics.
+- **Device Info**: Captures device details for debugging.
 
-## Usage
+## Getting Started
 
-### Initialization
+### Prerequisites
 
-Initialize the plugin in your `main.dart` before `runApp`:
+- Flutter SDK
 
-```dart
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+### Installation
 
-  await MyLoggerMetrics.init(
-    config: AppConfig(
-      flavor: Flavor.DEV, // or Flavor.PROD based on build environment
-      aptabaseAppKey: 'YOUR-APTABASE-KEY', // Optional: Omit if you only want logging
-    ),
-  );
+Add to your `pubspec.yaml`:
 
-  runApp(const MyApp());
-}
+```yaml
+dependencies:
+  my_logger_metrics:
+    git:
+      url: https://github.com/vraj0703/my_logger_metrics.git
 ```
 
-### Logging
+### Usage
 
-You can use the static methods on `MyLoggerMetrics` or the `$logger` alias:
+Initialize the logger at app startup and use it to record events.
 
-```dart
-$logger.d('Debug message');
-$logger.i('Info message');
-$logger.w('Warning message');
-$logger.e('Error message', error, stackTrace);
-```
+## Maintainers
 
-### Metrics
-
-You can use the static methods on `MyLoggerMetrics` or the `$metric` alias:
-
-```dart
-// Track a simple event
-await $metric.trackEvent('button_clicked', {'id': 'login_btn'});
-
-// Track a timed event
-final stopTimer = $metric.timeEvent('api_call');
-// ... perform operation ...
-await stopTimer({'result': 'success'}); // Logs event with 'duration_ms'
-```
-
-## Testing
-
-The project follows TDD. You can run the tests using:
-
-```bash
-flutter test
-```
-
-## Configuration
-
-The `AppConfig` class controls the behavior:
-
-- **DEV**: Log Level `debug`
-- **TEST**: Log Level `trace`
-- **STAGING**: Log Level `info`
-- **PROD**: Log Level `error`
+Maintained by the core development team.
